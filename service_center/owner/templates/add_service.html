@@ -1,0 +1,164 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+
+
+    <style>
+
+
+        .service_form
+        {
+            margin-left: 26%;
+            height: 500px;
+            width: 45%;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border: solid rgb(12, 12, 12) 1px;
+            box-shadow: 0px 0px 20px   rgb(10, 10, 10);
+        }
+
+        .service_form input
+        {
+        margin-left: 80px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        padding-left: 15px;
+        }
+
+        .service_form textarea{
+          
+        margin-left: 80px;
+        margin-bottom: 20px;
+        height: 100px;
+        width: 500px;
+        border-radius: 10px;
+        padding-left: 15px;
+        }
+        
+
+        .service_form select
+        {
+        padding-left: 15px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 230px;
+        border-radius: 10px;
+        margin-left: 80px;
+        }
+
+        .service_form button
+        {
+        background-color: rgb(176, 9, 9);
+        margin-top: 10px;
+        height: 40px;
+        width: 150px;
+        border-radius: 10px;
+        }
+
+        .alert{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 450px;
+            font-size: larger;
+            color: red;
+            margin-top: 15px;
+            transform: translate(25%, -10%);
+        }
+        .add_service_back_btn{
+            border: none;
+            margin-left: 90%;
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: rgba(226, 21, 21, 0);
+        }
+        .profile_header{
+            background-color: red;
+            width: 100%;
+            height: 60px;
+            color: rgb(14, 0, 0); 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+
+            border-top-right-radius: 12px;
+            border-top-left-radius: 12px;
+            border: solid rgb(12, 12, 12) 1px;
+
+        }
+    </style>
+
+
+</head>
+<body>
+    <!-- style="background-color: #f17969;
+    background-image: linear-gradient(90deg, #f17969 0%, #f76a87 55%, #fa0837 100%);
+    " -->
+  
+    <form action="center_back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="add_service_back_btn"><i style="font-size: 22px;" class="fa-solid fa-xmark"></i></button>
+    </form>
+
+    <h1 style="text-align: center;">{{msg}}<h1>
+   
+        <div class="service_form">
+          
+            <form method="POST" action="" enctype="multipart/form-data">
+             {%csrf_token%}
+            <!-- <div style="text-align: center; font-size: 35px; margin-bottom: 8%; color: rgb(0, 13, 14);">Add Service</div> -->
+            <div class="profile_header">ADD SERVICE</div>
+            <select name="car_name" class="select form-control-lg">
+                <option value="0" >Select Car</option>
+                <option value="Bolero" >Bolero</option>
+                <option value="BR-V">BR-V</option>
+                <option value="Scorpio">Scorpio</option>
+                <option value="XUV500">XUV500</option>
+                <option value="Aspire">Aspire</option>
+            </select>
+
+            <select name="service_category" class="select form-control-lg" >
+              <option value="0" >Select Service Category</option>
+              <option value="Periodic services">Periodic services</option>
+              <option value="AC Service">AC Service</option>
+              <option value="Denting and Penting">Denting and Penting</option>
+              <option value="Car Batteries">Car Batteries</option>
+              <option value="Tayers and Wheel Care">Tayers and Wheel Care</option>
+              <option value="Car Spa">Car Spa</option>
+          </select>
+
+          <input type="number" name="price" placeholder="Price">
+          <input type="text" name="service_Package_name" placeholder="Package Name">
+          <input type="file" name="service_image">
+          <textarea name="description" >Description</textarea>
+            
+
+            <div style="text-align: center;">  <button type="submit" id="login" ><b>Submit</b></button></div>
+            </form>
+
+
+        </div>
+   
+    
+</body>
+</html>
+

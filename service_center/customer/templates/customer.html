@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .cardcontainer{
+            margin-top: 40px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            background-color:white;
+            padding-bottom: 20px;
+            width: 100%;
+
+
+        }
+        .servicecard{
+            border: solid red 2px;
+            border-radius: 10px;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 400px; 
+            width: 300px; 
+            top:200px;
+            background-color: #ffe6e6;
+
+        }
+        .cimage{
+            padding: 10px;
+            border-radius: 5px;
+            height:160px;
+            width:95%;
+        }
+        .serviceinfo{
+            padding: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+           background-color:  #ffe6e6;
+            width: 92%;
+            height: 160px;
+            font-size: 17px;
+            
+        }
+
+        .cimage img{
+            height: 100%; 
+            width: 100%;
+            border-radius: 5px;
+        }
+        #cart{
+            height: 40px;
+            width: 100px;
+            margin-bottom: 18px;
+            background-color: red;
+            border-radius: 5px;
+        }
+
+        #cart:hover{
+            background-color: green;
+        }
+
+        .search_box_container{
+            box-shadow: 2px 3px 3px rgb(12, 0, 0); 
+            padding-left: 40px;
+            top:60px;
+            width: 800x;
+            height: 55px;
+            /* background-color:whitesmoke; */
+            background-color: rgba(160, 7, 7, 1);
+
+            
+        }
+        .search{
+           border:  solid rgb(10, 10, 10) 1px;
+            border-radius: 5px;
+            margin-top: 0px;
+            height: 35px;
+            width: 110px;
+            margin-left: 15px;
+            background-color: rgb(255, 255, 255);
+            
+        }
+        .search_btn{
+            box-shadow: 2px 3px 3px rgb(12, 0, 0);  
+            border:  solid rgb(10, 10, 10) 1px;
+            border-radius:10px;
+            margin-top: 12px;
+            height: 35px;
+            width: 75px;
+            margin-left: 20px;
+            background-color: rgba(254, 59, 59, 0.71);
+
+        }
+        .cart_msg{
+            color: orange;
+            font-size: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            margin-left: 35%;
+            width: 300px;
+            height: 50px;
+
+        }
+        .customer_back_btn{
+            position: fixed;
+            border: none;
+            margin-left:96%;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+        } 
+        
+     
+    </style>
+</head>
+<body> 
+
+    <div class="search_box_container">
+
+        <div class="cart_msg">
+           {{msg}}
+        </div>
+    
+        <form action="../customer/search_car" method="POST">
+            <span style="font-size: large; padding: 10px; color: #ddd;">Welcome, {{request.session.user}}</span>
+            <div style=" background-color: aqua;width: 10px; position: fixed; visibility: hidden;">
+            <select type="hidden" value="{{id}}" name="service_id">
+                <div style="visibility: hidden;">
+                <option value="{{id}} " type="hidden" >{{id}}</option>
+            </select>
+
+        </div>
+        {%csrf_token%}
+          <select name="car_name" class="search">
+            <option value=" " >Select Car</option>
+            <option value="Bolero" >Bolero</option>
+            <option value="BR-V">BR-V</option>
+            <option value="Scorpio">Scorpio</option>
+            <option value="XUV500">XUV500</option>
+            <option value="Aspire">Aspire</option>
+        </select>
+
+        <input type="submit" class="search_btn" value="search">
+        </form>
+
+    </div>
+    <form action="../back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="customer_back_btn"><i style="font-size: 30px; color: red;" class="fa-solid fa-xmark "></i></button>
+    </form>
+
+<div class="cardcontainer">
+
+{% for i in service %}
+<div  class="servicecard">
+    <div class="cimage">
+        <img src={{i.service_image.url}}>
+    </div>
+    <div class="serviceinfo">
+      <b> Service Category :</b>{{id}} {{i.service_category}}<br>
+       <b>Price : {{i.price}}<br></b>
+       Description :{{i.description}}<br>
+       <input type="hidden" name="state" value={{i.s_center_obj.state}}>
+       <input type="hidden" name="city" value= {{i.s_center_obj.city}}>
+       <input type="hidden" name="car_name" value={{i.car_name}}>  
+    </div>
+    <form action="../addtocart" method="POST">
+        {% csrf_token%}
+        <input type="hidden" name="serviceid" value={{i.id}}>
+         <button type="submit" id="cart">Add to Cart </button>
+         </form>
+    <!-- <input type="submit" value="Add To Cart" > -->
+
+    
+
+</div>
+{%endfor%}
+
+</div>
+
+
+</body>
+</html>

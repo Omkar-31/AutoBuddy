@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .recept_container{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="recept_container">
+        <table  width="60%" height="40%"  class="recept_table" border="2"  style="background-color: whitesmoke;border-color: black;border:  solid black ; " 
+            <tr>
+                <td colspan="2" style="text-align: center; color: red;"><h1>AutoBuddy</h1></td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Date :</b> {{i.delivery_date}}</td>
+            <tr>
+            <tr>
+                <td colspan="2" style="color: red;"><h3>Customer Information</h3></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                  <h4>  Name : {{i.customer_fname}} {{i.customer_lname}}</h4>
+                    <h4><span>contact: {{i.customer_contact}}</h4>
+                   <h4> email: {{request.session.user}}</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color: red;"><h3>Package Details :</h3></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><span style="font-size: 20x;"><b>Service Category :</b></span></td>
+                <td>{{i.service_category}}</td>
+            <tr>
+            <tr>
+                <td style="text-align: center;"><span><b>Package : </b></span></td>
+                <td>{{i.service_package}}</td>
+            <tr>
+            <tr>
+                <td style="text-align: center;"><span><b> Package Amount :</b></span></td>
+                <td>{{i.package_amount}}</td>
+            <tr>
+            <tr>
+                <td colspan="2" style="color: red;"><h3>Additional Work :</h3> </td>
+            <tr>
+            <tr>
+                <td style="text-align: center;"><span><b>Work Description</b></span></td>
+                <td>{{i.additional_work}}</td>
+            <tr>
+            <tr>
+                <td style="text-align: center;"><span><b>Cost</b></span></td>
+                <td>{{i.additional_cahrge}}</td>
+            <tr>
+            <tr>
+                <td style="color: red;"><h3>Total Cost</td>
+                <td style="color: red;"><h3> <h3>{{total}} </h3></h3></td>
+            <tr>
+
+
+        </table>
+
+    </div>
+    
+</body>
+</html>

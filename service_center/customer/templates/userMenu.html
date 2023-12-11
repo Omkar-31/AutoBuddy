@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\static\style.css">
+
+    <title>Document</title>
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+}
+    
+.menu_container{  
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    width:100%;
+    position: fixed;
+    background-color: rgba(160, 7, 7, 1);
+    margin-bottom: 200px;
+    
+    }
+    
+    a{
+    font-size: 20px;
+    text-decoration: none;
+    color:#0e0e0e;
+    padding: 10px; 
+    }
+
+.lmenu{
+  margin-left: px;
+    text-align: right;
+    justify-content: right;
+    width: 50%;  
+}
+.rmenu{  
+    height: 50px; 
+    margin-top: 0%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.search{
+  border-radius: 5px;
+  margin-top: 12px;
+  height: 35px;
+  width: 110px;
+  margin-left: 15px;
+  background-color: white;
+
+}
+
+* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button{
+    border: solid rgb(8, 0, 0) 2px;
+    width: 20px;
+    background-color: rgba(160, 7, 7, 1);
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-content a:hover {background-color: antiquewhite;}
+
+
+.show {display:block;}
+
+
+
+
+ li{
+    
+    display: inline-block;
+    padding: 15px;
+    padding-right: 15px; 
+    margin-right: 3px;
+ }
+
+li:hover{
+    background-color: antiquewhite;
+}
+
+</style>
+<script>
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+    <div class="menu_container"> 
+        <div class="rmenu">
+           <p style="font-size: large; padding: 10px; color: #ddd;">Welcome, {{request.session.user}}
+            
+            <div class="dropdown">
+              <i class='fas fa-user-alt' style='font-size:28px;  margin-top: 18px; '>
+              </i>
+              <button onclick="myFunction()" class="dropbtn" ><i class="fa-solid fa-caret-down" style='font-size:15px;'></i></button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="cust_profile">Profile</a>
+                
+                <a href="logout">Logout</a>
+              </div>
+          </div>
+          </p>
+        </div>  
+
+        <div class="lmenu">
+            <ul id="menu">
+                <li><a href="service" >Services</a></li>
+                <li><a href="viewcart">My Cart</a></li>
+                <li><a href="cust_appointmentview" >Appointment</a></li>
+            </ul> 
+        </div>
+
+    </div>   
+</body>
+</html>

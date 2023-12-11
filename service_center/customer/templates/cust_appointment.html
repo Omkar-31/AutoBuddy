@@ -1,0 +1,118 @@
+{% include 'userMenu.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Appointment_table td{
+            padding: 5px;
+            text-align: center;
+            height: 50px;
+        }
+        #Appointment_table th{
+            background-color: red;
+            color: white;
+            height: 38px;
+        }
+        #Appointment_table a{
+            color: rgb(0, 7, 13);
+            border-radius: 8px;
+            border:  solid rgb(10, 10, 10) 1px;
+            font-size: 16px;
+            padding-right: 25px;
+            padding-left: 25px;
+            background-color: rgba(254, 73, 73, 0.71);
+            background-color: blanchedalmond;
+        }
+        #Appointment_table{
+            margin-top: 50px;
+            margin-left: 10%;
+            border:  solid red 2px;
+        }
+        #Appointment_table button{
+            width: 90px;
+            height: 35px;
+            border-radius: 8px;
+        }
+        .notification_back_btn{
+            position: fixed;
+            border: none;
+            margin-left:95%;
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+        } 
+
+    </style>
+</head>
+<body>
+    <form action="back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="notification_back_btn"><i style="font-size: 22px; color: red;" class="fa-solid fa-xmark "></i></button>
+    </form>
+
+<table width="80%" id="Appointment_table" >
+    <tr>
+        <td colspan="6"><span style="font-size: 30px;">NOTIFICATIONS</span></td>
+    </tr>
+    <tr>
+    <th>Appointment Number</th>
+    <th> Name</th>
+    <th>Phono no</th>
+    <th>Appointment Date</th>
+    <th>Status</th>
+    <th >View</th>
+    </tr>
+    {% for i in appintment %}
+    <tr>
+    <td>{{i.appointment_no}}</td>
+    <td>{{i.customer_fname}}  {{i.customer_lname}} </td>
+    <td>{{i.customer_contact}}</td>
+    <td>{{i.appoinment_Date}}</td>
+    <td>{{i.status}}</td>
+
+    {% if i.status == 'complete' %}
+    <style>
+        #pay{
+            visibility: hidden;
+        }
+        #recep{
+            visibility: visible;
+            margin-right: 32%;
+        }
+    </style>
+      <td ><a href="/customer/view_detail/{{i.id}}" id="pay" type="hidden">Payment</a>
+        <a href="/customer/recipt/{{i.id}}" id="recep">Recept</a>
+        
+    {%endif%}
+
+    {% if i.status == 'Active' %}
+    
+    <style>
+        #payment{
+            visibility: visible;
+            margin-left: 30%;
+        }
+        #rep{
+            visibility: hidden;
+        }
+    </style>
+
+    <td ><a href="/customer/view_detail/{{i.id}}" id="payment" type="hidden" t>Payment</a>
+    <a href="/customer/recipt/{{i.id}}" id="rep" type="hidden">Recept</a></td>
+    
+    
+    {%endif%}
+    </tr>
+    {%endfor%}`
+</table>
+    
+</body>
+</html>

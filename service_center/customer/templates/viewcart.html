@@ -1,0 +1,248 @@
+
+{% include 'userMenu.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .maina_cart_container{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            background-color:white;
+        }
+         .cart_cardcontainer{ 
+            background-color:white;
+            padding-top: 80px;
+            padding-bottom: 20px;
+            width: 60%;
+            height:100vh;
+            padding-left: 30px;
+        }
+
+        .cart_card{
+            border: solid rgb(244, 6, 6) 2px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin-left:1%;
+            background-color:white;
+            display: flex;
+            flex-wrap: wrap;
+            width: 790px;
+            height: 120px;
+            justify-content: center;
+            align-items: center;
+            
+        }
+       
+
+        .cart_containt{
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100px;
+            background-color:white;
+            width: 95%;
+            justify-content: center;
+
+        }
+        .cart_image{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            margin-top:3px;
+            border-radius: 8px;
+            height: 94px;
+            width: 170px;
+            background-color:rgba(216, 215, 215, 0.656);
+        }
+        .cart_image img{
+            border-radius: 10px;
+            height: 90%;
+            width: 90%;
+        }
+
+        .cart_service_name{
+            
+            border-radius: 5px;
+           padding-top: 4px;
+           
+            padding-left: 10px;
+            margin-top: 2px;
+            height: 90px;
+            background-color:rgba(216, 215, 215, 0.656);
+            width: 250px;
+            margin-left: 15px;
+        }
+        .cart_service_price{
+            font-size: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2px;
+            height: 94px;
+            background-color:rgba(216, 215, 215, 0.656);
+            width: 120px;
+            margin-left: 15px;
+            border-radius: 5px;
+
+        }
+
+        .cart_btn{
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2px;
+            height: 95%;
+            background-color:rgba(216, 215, 215, 0.656);
+            width: 120px;
+            margin-left: 15px; 
+        }
+
+        .cart_sumarry_price{
+            border: solid red 3px;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            height: 150px;
+            margin-left: 5px;
+            width: 96%;
+            background-color: rgba(216, 215, 215, 0.656);
+            font-size: 25px;
+        }
+
+        .summary_card{
+            position: fixed;
+            margin-top: 180px;
+            margin-left: 100px; 
+            background-color:white;
+            width: 405px;
+            height: 315px;
+            border-radius: 10px;
+            box-shadow: 8px 8px 8px black ;  
+            border: solid red 3px;
+            
+        }
+        .check_out_btn{
+            box-shadow: 1px 2px 2px rgb(12, 0, 0);  
+            color: rgb(254, 253, 253);
+            background-color: rgba(202, 10, 10, 0.792);
+            border: solid rgb(7, 7, 7) 2px;
+            border-radius: 10px;
+            margin-left: 25%;
+            width: 200px;
+            margin-top: 13px;
+            height: 50px;
+            font-size: 16px;
+
+        }
+        #Summary_heading{
+            color: rgb(254, 253, 253);
+            background-color: rgba(202, 10, 10, 0.792);
+            border: solid rgb(7, 7, 7) 3px;
+            margin-left: 4px;
+            margin-top: 5px; 
+            height: 30px;
+            padding: 15px;
+            width: 360px;
+            border-radius: 10px;
+
+        }
+        .viewcart_back_btn{
+            position: fixed;
+            border: none;
+            margin-left:500px;
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+        } 
+    
+    </style>
+</head>
+<body> 
+
+<div  class="maina_cart_container">
+
+
+<div class="cart_cardcontainer">
+    <h1 style="margin-left: 20px; margin-bottom: 20px;">Shooping Cart <i class="fa-solid fa-cart-shopping" style="margin-left: 15px; color:rgba(202, 10, 10, 0.792); font-size: 40px;"></i></h1><br>
+    {% for i in cartobj %} 
+    <div class="cart_card">
+       
+       <div class="cart_containt">
+       
+        <div class="cart_image">
+        <img src={{i.serviceobj.service_image.url}}>
+        </div>
+        <div class="cart_service_name">
+            <h5 style="color: red;">Service Category : </h5>
+           <p style="margin-left: 30px;"> {{i.serviceobj.service_category}}</p><br>
+            <h5 style="color: red;">Package Name :</h5>
+            <p style="margin-left: 30px;">  {{i.serviceobj.service_Package_name}} </p>   
+        </div>
+        <div class="cart_service_price">
+            <h6 style="color: red;">price:</h6><br><br>
+            {{i.serviceobj.price}} 
+        </div>
+       
+       <form action="deletecart" method="POST">
+        {%csrf_token%}
+            <button type="submit" class="cart_btn" data-mdb-toggle="tooltip"
+            title="Remove item" name="deletecart" value={{i.id}}>
+            <i style="font-size: 25px;" class="fa-solid fa-trash-can"></i>
+            </button>
+        </form>
+
+
+    </div>
+   
+
+</div>
+{%endfor%}
+
+</div>
+<div class="cart_cardcontainer2">
+    <form action="back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="viewcart_back_btn"><i style="font-size: 22px; color: red;" class="fa-solid fa-xmark"></i></button>
+    </form>
+    <div class="summary_card">
+        <h2 id="Summary_heading">Summary</h2>
+        
+        <div class="cart_sumarry_price">
+            <table >
+                <tr>
+                    <td width="280px">Products : </td>
+                    <td width="120px">{{numberofproduct}}</td>
+                </tr>
+                <tr>
+                    <td>Total Price : </td>
+                    <td>{{price}}</td>
+                    <td>{{cartobj.id}}</td>
+                </tr>    
+            </table>   
+        </div>
+        <form action="go_tO_checkout" method="post">
+            {%csrf_token%}
+        <button type="submit" class="check_out_btn" >GO TO CHECKOUT</button>
+        </form>
+    </div>
+</div> 
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+{% include 'header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .cardcontainer{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            background-color:white;
+            padding-bottom: 20px;
+
+
+        }
+        .servicecard{
+            border: solid red 2px;
+            border-radius: 10px;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 400px; 
+            width: 300px; 
+            top:100px;
+            background-color: #ffe6e6;
+
+        }
+
+       
+        .cimage{
+            padding: 8px;
+            border-radius: 5px;
+            height:160px;
+            width:95%;
+        }
+        .serviceinfo{
+            padding: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            background-color:  #ffe6e6;
+            width: 92%;
+            height: 145px;
+            font-size: 17px;
+            
+        }
+
+        .cimage img{
+            height: 100%; 
+            width: 100%;
+            border-radius: 5px;
+        }
+        #cart{
+            margin-top: 0px;
+            height: 40px;
+            width: 100px;
+            background-color: red;
+            border-radius: 5px;
+        }
+
+        #cart:hover{
+            box-shadow: 2px 3px 3px   rgb(12, 0, 0);  
+        }
+
+        #btn_add_service{
+            box-shadow: 2px 3px 3px rgb(12, 0, 0);  
+            color: rgb(254, 253, 253);
+            background-color: rgba(202, 10, 10, 0.792);
+            border: solid rgb(7, 7, 7) 2px;
+            margin-right: 50px;
+            border-radius: 5px;
+            width: 130px;
+            text-align: center;
+            
+        }
+        .add_service_btn_container{
+            justify-content: right;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            background-color:white;
+            padding-top:15px ;
+            width: 100%;
+        }
+     
+    </style>
+</head>
+<body> 
+
+    <p style="color: rgb(255, 0, 0); padding-top: 48px; font-size: 40px; text-align: center;">{{msg}}</p>
+<div class="cardcontainer">
+    <div class="add_service_btn_container">
+        <a id="btn_add_service" href="add_service">Add Service</a>
+    </div>
+
+{% for i in service %}
+<div  class="servicecard">
+    <div class="cimage">
+        <img src={{i.service_image}}>
+       
+    </div>
+    <div class="serviceinfo">
+      <b> Service Category :</b> {{i.service_category}}<br>
+       <b>Price : {{i.price}}<br></b>
+       Description :{{i.description}}<br>
+
+       
+    </div>
+   
+    <!-- <input type="submit" value="Delete" id="cart"> -->
+        <form action="delet" method="POST">
+        {%csrf_token%}
+            <button type="submit" id="cart" data-mdb-toggle="tooltip" title="Remove item" name="delete_record" value={{i.id}}>Delete</button>
+        </form>
+
+    
+
+</div>
+{%endfor%}
+
+</div>
+
+
+</body>
+</html>

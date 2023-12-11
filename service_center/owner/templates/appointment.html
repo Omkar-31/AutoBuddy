@@ -1,0 +1,73 @@
+{% include 'header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Appointment_table td{
+            padding: 5px;
+            text-align: center;
+            height: 50px;
+        }
+        #Appointment_table th{
+            background-color: red;
+            color: white;
+            height: 38px;
+        }
+        #Appointment_table a{
+            color: rgb(0, 7, 13);
+            border-radius: 8px;
+            border:  solid rgb(10, 10, 10) 1px;
+            font-size: 16px;
+            padding-right: 25px;
+            padding-left: 25px;
+            background-color: rgba(254, 73, 73, 0.71);
+            background-color: blanchedalmond;
+        }
+        #Appointment_table{
+            margin-top: 65px;
+            margin-left: 10%;
+            border:  solid red 2px;
+        }
+        #Appointment_table button{
+            width: 90px;
+            height: 35px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+<table width="100%" id="Appointment_table">
+    <tr>
+    <th>Appointment Number</th>
+    <th> Name</th>
+    <th>Phono no</th>
+    <th>Selected Package</th>
+    <th>Appointment Date</th>
+    <th>Appointment Status</th>
+    <th colspan="2">View</th>
+    </tr>
+    {% for i in appointmentobj %}
+    <tr>
+    <td>{{i.appointment_no}}</td>
+    <td>{{i.customer_fname}}  {{i.customer_lname}} </td>
+    <td>{{i.customer_contact}}</td>
+    <td>{{i.service_package}}</td>
+    <td>{{i.appoinment_Date}}</td>
+    <td>{{i.status}}</td>
+    <td>
+        <form action="accept" method="post">
+            {%csrf_token%}
+            <a href="/service_center/accept/{{i.id}}" >view</a>
+        </form>
+    </td>
+    </tr>
+    {%endfor%}`
+</table>
+    
+</body>
+</html>

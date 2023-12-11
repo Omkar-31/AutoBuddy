@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\static\style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+<style>
+  
+
+*{
+    margin: 0;
+    padding: 0;
+}
+    
+.menu_container{ 
+    display: inline-block; 
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    width:100%;
+    position: fixed;
+    background-color: rgba(160, 7, 7, 1);
+    margin-bottom: 200px;
+    padding: 5x;
+    }
+    
+    a{
+    font-size: 20px;
+    text-decoration: none;
+    color:#0e0e0e;
+    padding: 10px; 
+    }
+
+.lmenu{
+    text-align: right;
+    justify-content: right;
+    width: 50%;  
+    height: 100%;
+
+}
+
+.rmenu{ 
+    height: 50px; 
+    margin-top: 0%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+
+ li{
+    
+    display: inline-block;
+    padding: 13px;
+    padding-right: 15px; 
+    margin-right: 3px;
+ }
+
+li:hover{
+    background-color: antiquewhite;
+}
+
+* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+
+.dropdown {
+
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button{
+    border: solid rgb(8, 0, 0) 2px;
+    width: 20px;
+    background-color: rgba(160, 7, 7, 1);
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-content a:hover {background-color: rgb(250, 226, 215);}
+
+
+.show {display:block;}
+
+</style>
+
+<script>
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+    <div class="menu_container"> 
+        <div class="rmenu">
+
+           <p style="font-size: large; padding: 10px; color: #ddd;">Welcome, {{request.session.user}}
+            
+              <div class="dropdown">
+                <i class='fas fa-user-alt' style='font-size:28px;  margin-top: 18px; '>
+                </i>
+                <button onclick="myFunction()" class="dropbtn" ><i class="fa-solid fa-caret-down" style='font-size:15px;'></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="profile">Profile</a>
+                  <a href="logout">Logout</a>
+                </div>
+            </div>
+            </p>
+        </div>
+        <div class="lmenu">
+          
+            <ul id="menu">
+              <li><a href="viewapp" style="font-size: 22px;" ><i class="fa fa-bell" aria-hidden="true" style="color: aliceblue;">
+                {% if notify == 0 %}
+                <style>
+                  sup{
+                    visibility: hidden;
+                  }
+                </style>
+                {%endif%}<sup style="margin-left: -6px;margin-top: -7px;position: absolute;font-size: 8px; background-color: green;color: aliceblue; border: solid rgb(14, 0, 0) 2px; padding: 5px; border-radius: 50%;">{{notify}}</sup></i></a></li>
+                <li><a href="user" >Services</a></li>
+                <li><a href="appointment">Appointment</a></li>
+                <li><a href="active_list" >Activity</a></li>
+            </ul> 
+        </div>
+
+    </div>   
+</body>
+</html>

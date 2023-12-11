@@ -1,0 +1,661 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\static\style.css">
+    <title>Document</title>
+
+    <style>
+
+*{
+    padding: 0%;
+    margin: 0%; 
+   
+}
+
+.menu{   
+   
+    width:100%;
+    display: inline-block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(160, 7, 7, 1);
+    
+    }
+    
+    a{
+    font-size: 20px;
+    text-decoration: none;
+    color:#0e0e0e;
+    padding: 10px; 
+    }
+
+    #menu{
+        text-align: right;   
+    }
+
+    li{
+        display: inline-block;
+        padding: 8px;
+    }
+
+    .image{
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        object-fit: cover;
+        background-attachment: fixed;
+        background-size: cover;
+        background-image: url(/static/images/car4.jpg);
+    
+        }
+
+
+
+        .limage{
+       
+        
+            width:48%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+            margin-left: 3%;
+            
+        }
+    
+        .limage img{
+            height: 95%;
+            width: 0%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 0 rgba(76, 75, 75, 1);
+        }
+    
+ .lcontant{
+padding: 30px;
+background-repeat: no-repeat;
+background-size: cover;
+object-fit: fit;
+background-color:white;
+margin-top: 80px;
+margin-left: 72%;
+border-radius: 5px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+display: inline-block;
+width: 330px;
+height: 350px;   
+box-shadow: 8px 8px 8px rgb(249, 39, 2);     
+}
+    
+        .lcontant input{
+            border: 2px solid rgba(160, 7, 7, 1); 
+            margin-bottom: 20px;
+            height: 40px;
+            width: 300px;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+    
+        .lcontant button{
+            background-color: rgba(160, 7, 7, 1);
+            margin-top: 20px;
+            height: 40px;
+            width: 150px;
+            border-radius: 10px;
+            margin-left: 87px;
+        }
+    
+        #reg{
+            margin-top: 60px;
+            margin-left: 35%;
+            font-size: 25px;
+            color: rgb(15, 15, 15);
+        }
+
+        .rform
+        {
+            margin-left: 26%;
+            padding: 20px;
+            height: 500px;
+            width: 45%;
+            background-color: rgba(255, 252, 252, 0.881);
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .rform input
+        {
+        margin-left: 80px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        padding-left: 15px;
+        }
+
+        .rform select
+        {
+        padding-left: 15px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 300px;
+        border-radius: 10px;
+        margin-left: 80px;
+        }
+
+        .rform button
+        {
+        background-color: rgb(176, 9, 9);
+        margin-top: 10px;
+        height: 40px;
+        width: 150px;
+        border-radius: 10px;
+        }
+
+        
+ 
+
+    .limage{
+       
+        
+        width:48%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15px;
+        margin-left: 3%;
+        
+    }
+
+    .limage img{
+        height: 95%;
+        width: 0%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 0 rgba(76, 75, 75, 1);
+    }
+
+    .lcontant{
+        padding: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: fit;
+        background-color:white;
+        margin-top: 80px;
+        margin-left: 72%;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        display: inline-block;
+        width: 330px;
+        height: 350px;   
+        box-shadow: 0px 0px 30px rgb(9, 9, 9);     
+    }
+
+    .lcontant input{
+        border: 2px solid rgba(160, 7, 7, 1); 
+        margin-bottom: 20px;
+        height: 40px;
+        width: 300px;
+        border-radius: 5px;
+        padding-left: 5px;
+    }
+
+    .lcontant button{
+        /* background-color: rgba(160, 7, 7, 1); */
+        background-color: red;
+        margin-top: 20px;
+        height: 40px;
+        width: 150px;
+        border-radius: 10px;
+        margin-left: 87px;
+    }
+
+    #reg{
+        margin-top: 60px;
+        margin-left: 35%;
+        font-size: 25px;
+        color: rgb(15, 15, 15);
+    }
+
+    .alert{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 350px;
+        font-size: larger;
+        color: red;
+        margin-top: 15px;
+        transform: translate(-2%, -200%);
+    }
+    .services{
+        height: 400px;
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: whitesmoke; */
+        background-color: white;
+        padding-bottom: 20px;
+    }
+
+    .how_work{
+        height: 800px;
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: whitesmoke; */
+        background-color: white;
+        /* padding-bottom: 30px; */
+    }
+
+    .why_us{
+        height: 600px;
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: whitesmoke; */
+        background-color: whitesmoke;
+        padding-bottom: 30px;
+    }
+
+    .contact_us{
+        height: 280px;
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: whitesmoke; */
+        background-color: rgb(43, 42, 42);
+        padding-bottom: 30px;
+
+    }
+
+    .service_container{
+        width:95%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        /* background-color: white; */
+        background-color: rgb(245,245,245);
+        /* justify-content: center;
+        align-items: center; */
+        /* padding: 10px; */
+        border:solid red 2px; 
+        border-radius: 25px;
+    }
+
+    .how_work_container{
+        width:95%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        background-color: rgb(245,245,245);
+        border:solid red 2px; 
+        border-radius: 25px;
+    }
+
+    .why_us_container{
+        width:95%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+        /* background-color:rgb(245,245,245); */
+        background-color:white;
+        border:solid red 2px; 
+        border-radius: 25px;
+    }
+
+    .contact_us_container{
+        width:100%;
+        height: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        /* padding-bottom: 20px; */
+        /* background-color:rgb(245,245,245); */
+        background-color:rgb(43, 42, 42);
+
+    }
+    .address{
+        height: 80%;
+        width: 30%;
+        /* background-color: rgb(43, 42, 42); */
+        background-color: rgb(43, 42, 42);
+        margin-left: 40px;
+        margin-top: 30px;
+    }
+    .title{
+        height: 90%;
+        width: 30%;
+        background-color: rgb(43, 42, 42);
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+    .info{
+        height: 90%;
+        width: 30%;
+        background-color: rgb(43, 42, 42);
+        margin-left: 20px;
+        margin-top: 30px;
+    }
+    .service_card{
+        border: 2px solid red; 
+        border-radius: 10px;
+        margin-top: 25px;
+        margin-left: 37px;
+        padding: 5px;
+        height: 120px;
+        width: 180px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .service_card_img{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        width: 95%;
+        height: 70%;
+        background-color: white;
+
+    }
+    .service_card_img img{
+        height: 80px;
+        width: 80px;
+    }
+    .service_card_content{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 20%;
+        width: 95%;
+        background-color: white;
+    }
+    .how_work_card{
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15%;
+        margin-top: 20px;
+        height: 130px;
+        width: 70%;
+        background-color: white;
+        box-shadow: 2px 2px 10px rgb(9, 9, 9); 
+           
+    }
+
+    .why_us_card{
+        padding-top: 8px;
+        padding-left: 8px;
+        margin-left: 2%;
+        margin-top: 20px;
+        height: 65px;
+        width: 95%;
+        background-color: white;
+
+    }
+
+    .why_us_card1{
+        height: 100%;
+        width: 70%;
+        /* background-color: firebrick; */
+        /* background-color: white; */
+
+    }
+    .why_us_card2{
+        margin-left: 1%;
+        height: 100%;
+        width: 28%;
+    }
+    .why_us_card2 img{
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+    .how_work_prt1{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        width: 45%;
+        /* background-color: aquamarine; */
+
+    }
+
+    .how_work_prt2{
+        margin-left: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        width: 45%;
+        /* background-color: rgb(6, 241, 163); */
+
+    }
+    .how_work_prt2 img{
+        width: 40%;
+        height: 80%;
+    }
+    .how_work_prt1 img{
+        width: 40%;
+        height: 80%;
+    }
+    .line{
+
+        height: 150px;
+        background-color: rgba(76, 75, 75, 0.4);
+    }
+    
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li><a style="color: white; font-size: 25px;"><i class="fa-solid fa-screwdriver-wrench" style="color: white; margin-right: 5px;"></i>AutoBuddy</a></li>
+            <!-- <li><a href="#About US" >About US</a></li>
+            <li><a href="#contact_us" >Contact US</a></li>
+            <li><a href="#Services" >FAQ</a></li>
+            <li><a >Login</a></li> -->
+        </ul>
+    </div>
+
+
+    
+    <div class="image">
+
+        <div class="login">
+            
+                <div class="lcontant">
+                    <form action="" method="POST">
+                        {%csrf_token%}
+                        <div style="color: rgb(13, 13, 13); text-align: center; font-size: 30px; margin-bottom: 50px;">Login</div>
+                        <input type="text"  placeholder="Enter User Name" name="user"><br>
+                        <input type="password"  placeholder="Password" name="pass"><br>
+                        <button type="submit" value="Login">Login</button><br>
+                        <div id="reg"><a href="/reg">Registration</a></div>
+
+                        <div class="alert">
+                             {% if errormsg %}
+                               <b> {{errormsg}}<b>
+                            {% endif %}
+                            </div>
+                    </form>
+                        
+                       
+                </div>
+            
+        
+        </div>
+        <div class="line">
+            <h1 style="font-size: 35px; margin-top: 100px; color: whitesmoke; margin-left: 30px;" >We’re your one-stop shop for all your automotive needs.</h1>
+            <h1 style="font-size: 28px; margin-top: 20px; color: whitesmoke; margin-left: 30px;">We’re here for you</h1>
+        </div>
+    
+    </div>
+    <div class="services">
+        <h1 style="margin-right: 72%; padding-top: 20px; padding-bottom: 20px;">Scheduled Services <i class="fa-solid fa-screwdriver-wrench" style="color: red;"></i></h1>
+        <div class="service_container">
+            <div class="service_card">
+                <div class="service_card_img">
+                    <img src="/static/images/periodic service.jpg">
+                </div>
+                <div class="service_card_content"><h4>Periodic Service </h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"> <img src="/static/images/AC service.jpg"></div>
+                <div class="service_card_content"><h4>AC Service</h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"><img src="/static/images/battry.png"></div>
+                <div class="service_card_content"><h4>Batteries</h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"><img src="/static/images/tyres2.png"></div>
+                <div class="service_card_content"><h4>Tyres & wheel Care</h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"><img src="/static/images/Danting and Painting.png"></div>
+                <div class="service_card_content"><h4>Denting and Paniting</h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"><img src="/static/images/inspaction.png"></div>
+                <div class="service_card_content"><h4>Car Inspections</h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"><img src="/static/images/wash.png"></div>
+                <div class="service_card_content"><h4>Car Spa & Clening</h4></div>
+
+            </div>
+            <div class="service_card">
+                <div class="service_card_img"><img src="/static/images/windshiled.jpg"></div>
+                <div class="service_card_content"><h4>Windshield & Lights</h4></div>
+
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="how_work">
+        <h1 style="margin-right: 65%; padding-top: 20px;">How AutoBuddy Work..? </h1>
+        <div class="how_work_container">
+            <div class="how_work_card">
+                <div class="how_work_prt1"><h2>Select Service Center Near You</h2></div>
+                <div class="how_work_prt2"><img src="/static/images/service.gif"><div style="border-radius: 50%; font-size: 20px; background-color: rgb(177, 242, 251); margin-left: 50px; height: 30px; width: 40px; text-align: center; padding-top: 10px;">1</div></div>
+            </div>
+
+            <div class="how_work_card">
+                <div class="how_work_prt1"><div style="border-radius: 50%; font-size: 20px; background-color: rgb(177, 242, 251); margin-right: 50px; height: 30px; width: 40px; text-align: center; padding-top: 10px;">2</div><img src="/static/images/select.gif"></div>
+                <div class="how_work_prt2"><h2>Select The Perfect Car Service</h2></div>
+            </div>
+
+            <div class="how_work_card">
+                <div class="how_work_prt1"><h2>Scheduled Appointment As Your Convince</h2></div>
+                <div class="how_work_prt2"><img src="/static/images/appt.gif"><div style="border-radius: 50%; font-size: 20px; background-color: rgb(177, 242, 251); margin-left: 50px; height: 30px; width: 40px; text-align: center; padding-top: 10px;">3</div></div>
+            </div>
+
+            <div class="how_work_card">
+                <div class="how_work_prt1"><div style="border-radius: 50%; font-size: 20px; background-color: rgb(177, 242, 251); margin-right: 50px; height: 30px; width: 40px; text-align: center; padding-top: 10px;">4</div><img src="/static/images/gif.gif"></div>
+                <div class="how_work_prt2"><h2>Get Instant Technicians Support</h2></div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <div class="why_us">
+        <h1 style="margin-right: 70%; ">Why AutoBuddy ..?</h1>
+        <div class="why_us_container"> 
+            <div class="why_us_card1">
+            <div class="why_us_card"><h3 style="color: red;">Expert Technicians:</h3><span style="font-size: 20px; padding-left: 80px;">Our team consists of highly skilled and certified technicians with extensive experience in servicing various car makes and models</span></div>
+            <div class="why_us_card"><h3 style="color: red;">Quality Parts:</h3> <span style="font-size: 20px; padding-left: 80px;"> We use only high-quality, genuine parts and accessories to ensure the best performance and longevity of your vehicle.</span></div>  
+            <div class="why_us_card"><h3 style="color: red;"> Customer Satisfaction: </h3> <span style="font-size: 20px; padding-left: 80px;">satisfaction is our priority. We aim to deliver exceptional service and build lasting relationships with our customers.</span></div>   
+            <div class="why_us_card"><h3 style="color: red;">Transparent Pricing:</h3><span style="font-size: 20px; padding-left: 80px;"> We believe in transparency and provide upfront pricing for all our services. No hidden costs or surprises.</span></div>   
+            <div class="why_us_card"><h3 style="color: red;">Timely Service: </h3> <span style="font-size: 20px; padding-left: 80px;">We value your time and strive to complete all services and repairs promptly, getting you back on the road as quickly as possible.</span></div>   
+            </div>
+            <div class="why_us_card2"><img src="/static/images/gif.gif"></div>
+        </div>
+    </div>
+
+    <div class="contact_us">
+        <h1 style="margin-right: 79%; color: white; margin-bottom: 8px;">Contact Us<i class="fa-solid fa-phone" style="margin-left: 20px;color: white;"></i></h1><br><br>
+        <span style="color: white;  font-size: 28px;margin-right: 81%; "><i class="fa-solid fa-screwdriver-wrench" style="color: white; font-size: 30px;"></i> AutoBuddy</span><br>
+              
+        <div class="contact_us_container"> 
+            <div class="address">
+               <h3 style="color: white;">Address:</h3>
+                <span style="font-size: 20px;  color: white; ">1st Floor, Haroon Building, 190 Princess Street, Kalbadevi Mumbai, Maharashtra, 400002</span>
+                
+                <br><br>
+                <i class="fa-brands fa-twitter" style="font-size: 30px; margin-left: 50px; color: white;"></i>
+                <i class="fa-brands fa-instagram " style="font-size: 30px; margin-left: 50px; color: white;"></i>
+                <i class="fa-brands fa-linkedin" style="font-size: 30px; margin-left: 50px; color: white;"></i>
+            </div>
+            <div class="title">
+               <span> <b style="color: white;">Email:</b><span>
+                <span style="color: white; margin-left: 80px;">AutoBuddy@gmail.com</span><br>
+               <span> <b style="color: white;">Phone Number:</b></span>
+                <span style="color: white;margin-left: 20px;">9892599219</span>
+                
+            
+            </div>
+            <div class="info">
+                <span><b style="color: white;">Working Days:  </b></span>
+                <span style="color: white; margin-left: 15px;">Monday to Sunday</span><br>
+                <span><b style="color: white;">Working Hours: </b></span>
+                <span style="color: white; margin-left: 12px;">7 AM to 9 PM</span>
+
+            </div>
+          
+        </div>
+    </div>
+    
+
+
+    </div>
+    
+
+
+    
+
+    
+</body>
+</html>

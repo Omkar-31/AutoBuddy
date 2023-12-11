@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+
+        .rform
+        {
+            margin-left: 26%;
+            height: 500px;
+            width: 45%;
+            background-color: rgba(255, 252, 252, 0.881);
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border:solid rgb(14, 13, 13) 2px;  
+            box-shadow: 0px 0px 15px   rgb(10, 10, 10); 
+        }
+
+        .rform input
+        {
+        border:solid rgb(14, 13, 13) 1px;  
+        margin-left: 80px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 200px;
+        border-radius: 5px;
+        padding-left: 15px;
+        }
+
+        .rform select
+        {
+        border:solid rgb(14, 13, 13) 1px; 
+        padding-left: 15px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 300px;
+        border-radius: 5px;
+        margin-left: 80px;
+        }
+
+        .rform button
+        {
+        /* background-color: rgb(176, 9, 9); */
+        background-color: red;
+        margin-top: 10px;
+        height: 40px;
+        width: 150px;
+        border-radius: 10px;
+        }
+
+        .alert{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 450px;
+            font-size: larger;
+            color: red;
+            margin-top: 15px;
+            transform: translate(25%, -10%);
+        }
+        .reg_header{
+            border:solid rgb(14, 13, 13) 2px; 
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            text-align: center; 
+            font-size: 35px; 
+            margin-bottom: 8%; 
+            color: rgb(0, 13, 14);
+            background-color: red;
+            height: 50px;
+        }
+    </style>
+
+
+</head>
+<body style>
+   
+        <div class="rform">
+            <form method="POST" action="">
+             {%csrf_token%}
+            <div class="reg_header">Registration  Form</div>
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name">
+            <input type="email"  name="email" placeholder="Email ">
+            <input type="number" name="phone" placeholder="Phone">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="cpassword" placeholder="conform Password">
+
+            <select name="user" class="select form-control-lg">
+                <option value="0" >User Type</option>
+                <option value="Customer">Customer</option>
+                <option value="Service Center">Service Center</option>
+              </select>
+
+              <div class="alert">
+                {% if errormsg %}
+                  <b> {{errormsg}}<b>
+               {% endif %}
+               </div>
+
+
+            <div style="text-align: center;">  <button type="submit" id="login" ><b>Submit</b></button></div>
+            </form>
+            
+
+
+
+
+
+
+        </div>
+   
+    
+</body>
+</html>

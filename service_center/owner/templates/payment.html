@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .payment_detail_container td{
+            padding: 0px;        
+        }
+        .payment_detail_container table{
+            padding-left: 30px;
+        }
+        .payment_detail_container{
+            border-radius: 10px;
+            margin-left: 10%;
+            background-color: #f6f6f6;
+            width: 80%;
+            border:  solid rgb(10, 10, 10) 1px;
+        }
+        .payment_detail_container input{
+            padding-left: 10px;
+            margin: 10PX;
+            height: 50px;
+            width: 300px;
+            border-radius: 5px;
+
+        }
+
+        .payment_detail_container select{
+            padding-left: 10px;
+            margin: 10PX;
+            height: 50px;
+            width: 300px;
+            border-radius: 5px;
+        }
+
+        .payment_detail_container label{
+            padding: 10px;
+            width: 100px;
+            margin: 10PX;
+            padding: 10px;
+        }
+        .payment_detail_container button{
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-left: 80px;
+            margin-bottom: 25px;
+            height: 50px;
+            width: 130px;
+        }
+        .payment_head_container{
+            /* border-radius: 10px; */
+            border-top-right-radius: 10PX;
+            border-top-left-radius: 10PX;
+            border-bottom: solid rgb(10, 10, 10) 1px;;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            background-color: red;
+            width: 100%;
+            height: 45px;
+        }
+
+        .app_shedual_back_btn{
+            position: fixed;
+            margin-top: 40 px;
+            border: none;
+            margin-left: 92%; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+            /* background-color: rgba(250, 7, 7, 0); */
+        }
+    </style>
+
+    <script>
+
+
+        function total(){
+            const number1 = parseInt(document.getElementById("pk").value);
+            const number2 = parseInt(document.getElementById("extra").value);
+            const number3 = parseInt(document.getElementById("total").value);
+            amt=number1 +number2
+            number3=amt
+        }
+
+    </script>
+</head>
+<body >
+
+    <form action="../center_back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="app_shedual_back_btn"><i style="font-size: 22px; color: red;" class="fa-solid fa-xmark"></i></button>
+    </form>
+        
+    <div class="payment_detail_container">
+        <div class="payment_head_container">SERVICE  RECORD</div>
+        <table>
+            <form method="post" action="">
+                {%csrf_token%}
+            <tr>
+                <td width="150px">Appointment No</td>
+                <td width="470px"><input placeholder="appointment No " name="appointment_no" value="{{i.appointment_no}}"></td>
+                <td width="200px"><label>Appointment Date</label></td>
+                <td><input  placeholder="appointment date" name="appintment_date" value="{{i.appintment_date}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px"><label>First Name</label></td>
+                <td><input placeholder="first Name" name="customer_fname" value="{{i.customer_fname}}"></td>
+                <td ><label>Last Name</label></td>
+                <td><input placeholder="last Name" name="customer_lname" value="{{i.customer_lname}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Contact No</td>
+                <td><input placeholder="contact No"  name="customer_contact"value="{{i.customer_contact}}" ></td>
+                <td ><label>Service Category</label></td>
+                <td><input placeholder="service category"  name="service_category" value="{{i.service_category}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Package Name</td>
+                <td><input placeholder="package name" name="service_package" value="{{i.service_package}}"></td>
+                <td ><label>Package Amount</label></td>
+                <td><input placeholder="amount" name="package_amount" value="{{i.package_amount}}" id="pk"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Vehical Name</td>
+                <td><input placeholder="car Name"  name="car_name" value="{{i.car_name}}"></td>
+                <td ><label>Vehical No</label></td>
+                <td> <input placeholder="car no"   name="car_no" value="{{i.car_no}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">External Services</td>
+                <td><input style="width: 400px; height: 90px;" name="additional_work" value="{{i.additional_work}}"></td>
+                <td ><label>Extra Charges</label></td>
+                <td><input   name="additional_cahrge" value="{{i.additional_cahrge}}" id="extra"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Total Amount</td>
+                <td><input type="number"  name="total_amount" value="{{i.total_amount}}" id="total"></td>
+                <td ><label>Delivery Date</label></td>
+                <td><input   name="delivery_date" value="{{i.delivery_date}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Payment Mode</td>
+               
+                <td><select name="payment_mode" class="select form-control-lg">
+                    <option value="online" >online</option>
+                    <option value="cash" >cash</option>
+                </select></td>
+
+                <td width="150px">Payment Status</td>
+               
+                <td><select name="payment_status" class="select form-control-lg">
+                    <option value="Pending" >Pending</option>
+                    <option value="Paid" >Paid</option>
+                </select></td>
+            </tr>
+
+        </table>
+        <button type="submit" onclick="total()" style="background-color: green; margin-left: 45%;">SAVE</button>
+        </form>
+
+    </div>
+    
+</body>
+</html>

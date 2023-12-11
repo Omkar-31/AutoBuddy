@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .payment_detail_container td{
+            padding: 0px;        
+        }
+        .payment_detail_container table{
+            padding-left: 30px;
+        }
+        .payment_detail_container{
+            border-radius: 10px;
+            margin-left: 10%;
+            background-color: #f6f6f6;
+            width: 80%;
+            border:  solid rgb(10, 10, 10) 1px;
+        }
+        .payment_detail_container input{
+            padding-left: 10px;
+            margin: 10PX;
+            height: 50px;
+            width: 300px;
+            border-radius: 5px;
+
+        }
+
+        .payment_detail_container select{
+            padding-left: 10px;
+            margin: 10PX;
+            height: 50px;
+            width: 300px;
+            border-radius: 5px;
+        }
+
+        .payment_detail_container label{
+            padding: 10px;
+            width: 100px;
+            margin: 10PX;
+            padding: 10px;
+        }
+        .payment_detail_container button{
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-left: 80px;
+            margin-bottom: 25px;
+            height: 50px;
+            width: 130px;
+        }
+        .payment_head_container{
+            /* border-radius: 10px; */
+            border-top-right-radius: 10PX;
+            border-top-left-radius: 10PX;
+            border-bottom: solid rgb(10, 10, 10) 1px;;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            background-color: red;
+            width: 100%;
+            height: 45px;
+        }
+
+        .app_shedual_back_btn{
+            position: fixed;
+            margin-top: 40 px;
+            border: none;
+            margin-left: 92%; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+            /* background-color: rgba(250, 7, 7, 0); */
+        }
+    </style>
+</head>
+<body >
+
+    <form action="../center_back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="app_shedual_back_btn"><i style="font-size: 22px; color: red;" class="fa-solid fa-xmark"></i></button>
+    </form>
+        
+    <div class="payment_detail_container">
+        <div class="payment_head_container">SERVICE  DETAILS</div>
+        <table>
+                {%csrf_token%}
+            <tr>
+                <td width="150px">Appointment No</td>
+                <td width="470px"><input placeholder="appointment No " name="appointment_no" value="{{i.appointment_no}}"></td>
+                <td width="200px"><label>Appointment Date</label></td>
+                <td><input  placeholder="appointment date" name="appintment_date" value="{{i.appintment_date}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px"><label>First Name</label></td>
+                <td><input placeholder="first Name" name="customer_fname" value="{{i.customer_fname}}"></td>
+                <td ><label>Last Name</label></td>
+                <td><input placeholder="last Name" name="customer_lname" value="{{i.customer_lname}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Contact No</td>
+                <td><input placeholder="contact No"  name="customer_contact"value="{{i.customer_contact}}" ></td>
+                <td ><label>Service Category</label></td>
+                <td><input placeholder="service category"  name="service_category" value="{{i.service_category}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Package Name</td>
+                <td><input placeholder="package name" name="service_package" value="{{i.service_package}}"></td>
+                <td ><label>Package Amount</label></td>
+                <td><input placeholder="amount" name="package_amount" value="{{i.package_amount}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Vehical Name</td>
+                <td><input placeholder="car Name"  name="car_name" value="{{i.car_name}}"></td>
+                <td ><label>Vehical No</label></td>
+                <td> <input placeholder="car no"   name="car_no" value="{{i.car_no}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">External Services</td>
+                <td><input style="width: 400px; height: 90px;" name="additional_work" value="{{i.additional_work}}"></td>
+                <td ><label>Extra Charges</label></td>
+                <td><input   name="additional_cahrge" value="{{i.additional_cahrge}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Total Amount</td>
+                <td><input type="number"  name="total_amount" value="{{i.total_amount}}"></td>
+                <td ><label>Delivery Date</label></td>
+                <td><input   name="delivery_date" value="{{i.delivery_date}}"></td>
+            </tr>
+
+            <tr>
+                <td width="150px">Payment Mode</td>
+               
+                <td><input name="payment_mode" class="select form-control-lg" value="{{i.payment_mode}}"></td>
+
+                <td width="150px">Payment Status</td>
+                <td><input name="payment_status" class="select form-control-lg" value="{{i.payment_status}}"></td>
+            </tr> 
+
+            <tr>
+                <td colspan="4" style=" padding-left: 150px; padding-top: 15px;"><div id="paypal-button-container"></div></td>
+            </tr>
+ 
+
+        </table>
+        <form action="../gen_recp" id="submit-form" method="POST">
+            {%csrf_token%}
+            <input type="hidden" name="apt_no" value="{{i.appointment_no}}">
+            <input type="hidden" id="tsid" name="tsid">
+            <input type="hidden" id="status" name="status">
+            <input type="hidden" id="amountpaid" name="amountpaid" value="{{i.total_amount}}">
+            <!-- <input type="submit" value="Genrate Recept" > -->
+        </form>
+          
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    
+        <script>
+            var amount={{total}}
+         function initPayPalButton() {
+    
+    paypal.Buttons({
+    
+      style: {
+    
+        shape: 'rect',
+    
+        color: 'gold',
+    
+        layout: 'vertical',
+    
+        label: 'paypal',
+    
+       
+    
+      },
+    
+    
+    
+      createOrder: function(data, actions) {
+    
+        return actions.order.create({
+    
+          purchase_units: [{"amount":{"currency_code":"USD","value":amount}}]
+    
+        });
+    
+      },
+    
+    
+    
+      onApprove: function(data, actions) {
+    
+        return actions.order.capture().then(function(orderData) {
+    
+         
+    
+          // Full available details
+    
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+    
+    
+    
+          // Show a success message within this page, e.g.
+    
+          const element = document.getElementById('paypal-button-container');
+    
+          element.innerHTML = '';
+    
+        //   element.innerHTML = '<h3>Thank you for your payment!</h3>';
+            document.getElementById("tsid").value = orderData['id']
+        
+            document.getElementById("status").value = orderData['status']
+        
+            document.getElementById("amountpaid").value = amount 
+
+            let formsubmit =document.getElementById('submit-form')
+            console.log(formsubmit);
+            formsubmit.submit()
+    
+    
+    
+          // Or go to another URL: actions.redirect('thank_you.html');
+    
+         
+    
+        });
+    
+      },
+    
+    
+    
+      onError: function(err) {
+    
+        console.log(err);
+    
+      }
+    
+    }).render('#paypal-button-container');
+    
+    }
+    
+    initPayPalButton();
+    
+    </script>
+    </div>
+    
+</body>
+</html>

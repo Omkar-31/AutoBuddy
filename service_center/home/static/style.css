@@ -1,0 +1,149 @@
+*{
+    padding: 0%;
+    margin: 0%; 
+   
+}
+
+.menu{   
+   
+    width:100%;
+    display: inline-block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(160, 7, 7, 1);
+    
+    }
+    
+    a{
+    font-size: 20px;
+    text-decoration: none;
+    color:#0e0e0e;
+    padding: 10px; 
+    }
+
+    #menu{
+        text-align: right;   
+    }
+
+    li{
+        display: inline-block;
+        padding: 8px;
+    }
+
+    .image{
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        object-fit: cover;
+        background-attachment: fixed;
+        background-size: cover;
+        background-image: url(/static/images/car4.jpg);
+    
+        }
+
+
+
+        .limage{
+       
+        
+            width:48%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+            margin-left: 3%;
+            
+        }
+    
+        .limage img{
+            height: 95%;
+            width: 0%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 0 rgba(76, 75, 75, 1);
+        }
+    
+ .lcontant{
+padding: 30px;
+background-repeat: no-repeat;
+background-size: cover;
+object-fit: fit;
+background-color:white;
+margin-top: 80px;
+margin-left: 72%;
+border-radius: 5px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+display: inline-block;
+width: 330px;
+height: 350px;   
+box-shadow: 8px 8px 8px rgb(249, 39, 2);     
+}
+    
+        .lcontant input{
+            border: 2px solid rgba(160, 7, 7, 1); 
+            margin-bottom: 20px;
+            height: 40px;
+            width: 300px;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+    
+        .lcontant button{
+            background-color: rgba(160, 7, 7, 1);
+            margin-top: 20px;
+            height: 40px;
+            width: 150px;
+            border-radius: 10px;
+            margin-left: 87px;
+        }
+    
+        #reg{
+            margin-top: 60px;
+            margin-left: 35%;
+            font-size: 25px;
+            color: rgb(15, 15, 15);
+        }
+
+        .rform
+        {
+            margin-left: 26%;
+            padding: 20px;
+            height: 500px;
+            width: 45%;
+            background-color: rgba(255, 252, 252, 0.881);
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .rform input
+        {
+        margin-left: 80px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        padding-left: 15px;
+        }
+
+        .rform select
+        {
+        padding-left: 15px;
+        margin-bottom: 20px;
+        height: 40px;
+        width: 300px;
+        border-radius: 10px;
+        margin-left: 80px;
+        }
+
+        .rform button
+        {
+        background-color: rgb(176, 9, 9);
+        margin-top: 10px;
+        height: 40px;
+        width: 150px;
+        border-radius: 10px;
+        }

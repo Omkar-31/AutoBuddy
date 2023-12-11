@@ -1,0 +1,106 @@
+{% include 'userMenu.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #service_center td{
+            padding: 5px;
+            text-align: center;
+            height: 50px;
+        }
+        #service_center th{
+            background-color: red;
+            color: white;
+            height: 38px;
+        }
+        #service_center a{
+            color: rgb(0, 7, 13);
+            border-radius: 10px;
+            border:  solid rgb(10, 10, 10) 1px;
+            font-size: 14px;
+            background-color: rgba(254, 59, 59, 0.71);
+        }
+
+        .search_box_container{
+            box-shadow: 4px 2px 2px rgb(12, 0, 0); 
+            padding-left: 40px;
+            padding-top: 45px;
+            top:60px;
+            width: 800x;
+            height: 55px;
+            background-color:whitesmoke;
+            
+        }
+        .search{
+           border:  solid rgb(10, 10, 10) 1px;
+            border-radius: 5px;
+            margin-top: 12px;
+            height: 35px;
+            width: 110px;
+            margin-left: 15px;
+            background-color: rgb(255, 255, 255);
+        }
+        .search_btn{
+            box-shadow: 2px 3px 3px rgb(12, 0, 0);  
+            border:  solid rgb(10, 10, 10) 1px;
+            border-radius:10px;
+            margin-top: 12px;
+            height: 35px;
+            width: 75px;
+            margin-left: 20px;
+            background-color: rgba(254, 59, 59, 0.71);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="search_box_container">
+        <form action="search" method="POST">
+        {%csrf_token%}
+        <select name="state" class="search">
+            <option value=" " >Select State</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Gujrat">Gujrat</option>
+            <option value="Goa">Goa</option>
+          </select>
+  
+          <select name="city" class="search">
+            <option value=" " >Select City</option>
+            <option value="Kalamboli">Kalamboli</option>
+            <option value="Taloja">Taloja</option>
+            <option value="Navi Mumabi">Navi Mumabi</option>
+            <option value="Pali">Pali</option>
+            <option value="Goregaon">Goregaon</option>
+          </select>
+        <button type="submit" class="search_btn">Search</button>
+        </form>
+
+    </div>
+    <table width="100%" id="service_center">
+        <tr>
+        <th>STATE</th>
+        <th>CITY</th>
+        <th>NAME</th>
+        <th>ADDRESS</th>
+        <th>CONTACT</th>
+        <th>VIEW</th>
+        </tr>
+        {% for i in service %}
+        <tr>
+        <td style="text-align: center;">{{i.state}}</td>
+        <td>{{i.city}}</td>
+        <td>{{i.center_name}}</td>
+        <td>{{i.center_addr}}</td>
+        <td>{{i.center_phone}}</td>
+        <td><a href="/customer/customer/{{i.id}}">View Details</a></td>
+        </tr>
+        {%endfor%}`
+    </table>
+    
+</body>
+</html>

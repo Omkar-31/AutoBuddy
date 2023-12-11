@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/434b6475b4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .appoinment_detail_container{
+            border-radius: 10px;
+            margin-left: 10%;
+            background-color: #f6f6f6;
+            width: 80%;
+            border:  solid rgb(10, 10, 10) 1px;
+        }
+        .appoinment_detail_container input{
+            padding-left: 10px;
+            border-radius: 5px;
+            margin-top: 50px;
+            height: 50px;
+            width: 300px;
+            margin-left: 40px;
+        }
+
+        .appoinment_detail_container label{
+            padding: 10px;
+            width: 100px;
+            margin-top: 50px;
+            margin-left: 80px;
+        }
+        .appoinment_detail_container button{
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 50px;
+            margin-left: 80px;
+            margin-bottom: 25px;
+            height: 50px;
+            width: 130px;
+        }
+        .appointmnet_head_container{
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border:  solid rgb(10, 10, 10) 1px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            background-color: red;
+            width: 100%;
+            height: 60px;
+        }
+        
+        .app_shedual_back_btn{
+            position: fixed;
+            margin-top: 40 px;
+            border: none;
+            margin-left: 92%; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+            /* background-color: rgba(250, 7, 7, 0); */
+        }
+    </style>
+</head>
+<body >
+
+    <form action="../center_back" method="post">
+        {%csrf_token%}
+        <button type="submit" class="app_shedual_back_btn"><i style="font-size: 22px; color: red;" class="fa-solid fa-xmark"></i></button>
+    </form>
+
+    <div class="appoinment_detail_container">
+        <div class="appointmnet_head_container">APPOINTMNET DETAIL</div>
+        <label>Appointment No</label>
+        <input placeholder="appointment No " name="appointment_no" value="{{i.appointment_no}}">
+        <label>Appointment Date</label>
+        <input placeholder="appointment date" name="appoinment_Date" value="{{i.appoinment_Date}}">
+        <label style="margin-left: 120px;">First  Name</label>
+        <input placeholder="first Name" name="customer_fname" value="{{i.customer_fname}}">
+        <label style="margin-left: 120px;">Last Name</label>
+        <input placeholder="last Name" name="customer_lname" value="{{i.customer_lname}}">
+        <label style="margin-left: 95px;">Contact Number</label>
+        <input placeholder="contact No"  name="customer_contact"value="{{i.customer_contact}}" >
+        <label>Service category</label>
+        <input placeholder="service category"  name="service_category" value="{{i.service_category}}">
+        <label style="margin-left: 102px;">Package Name </label>
+        <input placeholder="package name" name="service_package" value="{{i.service_package}}">
+        <label>Package Amount</label>
+        <input placeholder="amount" name="Totalamount" value="{{i.Totalamount}}">
+        <label style="margin-left: 105px;">Vehical Name</label>
+        <input placeholder="car Name"  name="car_name" value="{{i.car_name}}">
+        <label>Vehical Number</label>
+        <input placeholder="car no"   name="car_no" value="{{i.car_no}}">
+        <br>
+        <!-- hide data -->
+        <input type="hidden"  name="customer_email" value="{{i.customer_email}}">
+        <input type="hidden"   name="service_center_name" value="{{i.service_center_name}}">
+        <input type="hidden"   name="service_center_contact" value="{{i.service_center_contact}}">
+        <input type="hidden"   name="service_center_email" value="{{i.service_center_email}}">
+        <input type="hidden"   name="status" value="{{i.status}}">
+        
+
+        <!-- hide data -->
+
+        <div style="display: flex; flex-wrap: wrap;margin-left: 30%;">
+        <form action="" method="post">
+            {%csrf_token%}
+        <button type="submit" style="background-color: green;">Accept</button>
+        </form>
+        <form action="../declined" method="post">
+            {%csrf_token%}
+            <input type="hidden"   name="id" value="{{id}}">
+        <button type="submit" style="background-color: red;">Declined</button>
+        </form>
+        </div>
+
+    </div>
+    
+</body>
+</html>
